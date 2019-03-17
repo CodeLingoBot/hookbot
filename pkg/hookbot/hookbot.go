@@ -165,7 +165,7 @@ type MessageListeners struct {
 // Timeout for a ServeSubscribe to accept a message before it gets dropped.
 const timeout = 1 * time.Second
 
-// The TimeoutSendWorker passes messages from r onto individual listeners.
+// passes messages from r onto individual listeners.
 // It is responsible for dropping messages if the receiver can't keep up fast
 // enough, or if the receiver disappears.
 // Fun history: we used to spawn a goroutine per message, but this wasted large
@@ -296,7 +296,7 @@ func (h *Hookbot) Loop() {
 	}
 }
 
-// Return a new Listener which receives messages for `topic`.
+// Add returns a new Listener which receives messages for `topic`.
 func (h *Hookbot) Add(topic string) Listener {
 	ready := make(chan struct{})
 	l := Listener{
@@ -326,7 +326,7 @@ func (h *Hookbot) AddRouter(r Router) {
 	}
 }
 
-// Remove `l` from the set of interested listeners.
+// Del removes `l` from the set of interested listeners.
 func (h *Hookbot) Del(l Listener) {
 	close(l.dead)
 	h.delListener <- l

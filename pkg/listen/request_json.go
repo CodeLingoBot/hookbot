@@ -13,7 +13,7 @@ type Message struct {
 	*http.Request
 }
 
-// Read out the full request body and replace it with a buffer
+// Payload reads out the full request body and replace it with a buffer
 func (m Message) Payload() ([]byte, error) {
 	body, err := ioutil.ReadAll(m.Body)
 	if err != nil {

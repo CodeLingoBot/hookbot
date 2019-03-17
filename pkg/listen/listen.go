@@ -201,7 +201,7 @@ func RetryingWatch(
 	return outm, oute
 }
 
-// Return a random duration from -1s to +1s
+// Jitter returns a random duration from -1s to +1s
 func Jitter(mul int) time.Duration {
 	m := time.Duration(mul)
 	return time.Duration(rand.Intn(int(m*2*time.Second))) - m*1*time.Second
